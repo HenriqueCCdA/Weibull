@@ -1,6 +1,5 @@
 import numpy as np
 import math as mt
-import time as tm
 
 # **********************************************************
 def media(c,b):
@@ -67,8 +66,8 @@ def get_b_c(mu,sig,tol=1.e-11,maxIt=10000):
 # linha 2
         A[1] = c*c*mt.gamma(y) # A22
 # linha 3  
-        A[2] = -2.e0            # A33
-        A[3] =  1.e0            # A23
+        A[2] =  2.e0            # A33
+        A[3] = -1.e0            # A23
 
     def VetorF(F,sig,mu):
         '''
@@ -129,43 +128,6 @@ def get_b_c(mu,sig,tol=1.e-11,maxIt=10000):
     
     return b,c
 # **********************************************************
-
-# **********************************************************
-def main():
-
-
-#    mu  = float(input('Entre com a media:\n'))
-#    sig = float(input('Entre com o desvido padrao:\n'))
-
-    mu  =99884.95e0
-    sig =255.84e0
-
-    mu  = 4.0
-    sig = 1.0
-
-    time  = tm.time()
-    b, c = get_b_c(mu,sig,tol=1e-10,maxIt=1500000)
-    time = tm.time() - time
-
-    print('\n***************************************')
-    print('Time (s) =',time)
-    print('***************************************')
-
-
-    print('\n***************************************')
-    print('c = {0}\nb = {1}'.format(c,b))
-    print('***************************************\n')
-
-    mui  = media(c,b)
-    sig1 = desv(c,b)
-    
-    print('***************************************')
-    print('mu    = {0}\nmui   = {1}\n|res| = {2}\n'.format(mu ,mui,abs(mu-mui)))
-    print('sig   = {0}\nsigi  = {1}\n|res| = {2}\n'.format(sig,sig1,abs(sig-sig1)))
-    print('***************************************')
-# **********************************************************
-
-main()
 
 
 

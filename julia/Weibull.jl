@@ -42,12 +42,12 @@ function get_b_c(mu, sig, tol = 1e-11, maxIt=100000)
 
     function Matriz(A, x)
 # linha 1
-        A[1] = x[3]*gamma(x[3])   # A11
+         A[1] = x[3]*gamma(x[3])   # A11
 # linha 2
-        A[2] = (x[1]^2)*gamma(x[2]) # A22
+         A[2] = (x[1]^2)*gamma(x[2]) # A22
 # linha 3
-        A[3] = -2.e0               # A33
-        A[4] =  1.e0               # A23
+        A[3] =  2.e0               # A33
+        A[4] = -1.e0               # A23
     end
 
 # ... inicializado arranjos
@@ -67,6 +67,8 @@ function get_b_c(mu, sig, tol = 1e-11, maxIt=100000)
     j = 0
     while j < maxIt
 # ...
+        x0 = copy(x)
+# ...
         Matriz(A, x)
 # ... residuo
         R = F - matvec(A ,x)
@@ -76,8 +78,6 @@ function get_b_c(mu, sig, tol = 1e-11, maxIt=100000)
             break
         end
         j+=1
-# ...
-        x0 = x
 # ...
         solv(A, x, F)
 # ... relaxamento
