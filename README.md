@@ -6,3 +6,4 @@ Versão do código em:
 Python
 Fortran
 Julia
+C

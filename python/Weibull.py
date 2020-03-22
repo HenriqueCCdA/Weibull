@@ -140,8 +140,8 @@ def main():
     mu  =99884.95e0
     sig =255.84e0
 
-#    mu  = 4.0
-#    sig = 2.0
+    mu  = 4.0
+    sig = 1.0
 
     time  = tm.time()
     b, c = get_b_c(mu,sig,tol=1e-10,maxIt=1500000)
