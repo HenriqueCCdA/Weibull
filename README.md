@@ -1,9 +1,11 @@
+# Distribuição Weibull
+
 Cálculo dos paramentros b e c da curva Weibull de uma distruibuição 
 com a media e desvio padrão conhecidos.
 
-Versão do código em:
+## Versão do código em:
 
-Python
-Fortran
-Julia
-C
+* Python
+* Fortran
+* Julia
+* C
