@@ -9,7 +9,7 @@ A média da distribuição é dada por:
 
 <img src="https://render.githubusercontent.com/render/math?math=\mu=c\times\Gamma\left(\frac{1}{b} %2B 1 \right)">
 
-Já desvio padrão é dado por:
+Já o desvio padrão é dado por:
 
 <img src="https://render.githubusercontent.com/render/math?math=\sigma=\sqrt{\left( c^2 \times \Gamma \left( \frac{2}{b} %2B 1 \right) -\mu^2 \right)}">
 
