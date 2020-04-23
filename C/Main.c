@@ -1,27 +1,7 @@
 #include<stdio.h>
 #include<omp.h>
 #include<math.h>
-
-void weibull(double const mu , double const sig
-            ,double *b       , double *c
-            ,double const tol, int const maxIt);
-
-/*********************************************************************/
-double media(double c, double b)
-{
-  return c*tgamma(1.e0 + 1.e0/b);
-}
-/*********************************************************************/
-
-/*********************************************************************/
-double desv(double c, double b)
-{
-  double mu = media(c, b);
-
-  return sqrt( c*c*tgamma(1.e0 + 2.e0/b) - mu*mu);
-
-}
-/*********************************************************************/
+#include"Weibull.h"
 
 /*********************************************************************/
 int main(int argc, char *argv[]){
@@ -29,15 +9,16 @@ int main(int argc, char *argv[]){
   double mu, sig, mui, sigi, b, c;
   double time;
 /*...*/
-  mu  = 99884.95e0;
-  sig = 255.84e0;
+  mu  = 4.95e0;
+  sig = 2.84e0;
 /*...................................................................*/
 
 /*...*/
   time = omp_get_wtime();
   weibull(mu ,sig
          ,&b ,&c
-         ,1.e-11,15000000);
+         ,1.e-11,15000000
+         ,0.5e0);
   time = omp_get_wtime() - time;
 /*...................................................................*/
 
@@ -55,8 +36,8 @@ int main(int argc, char *argv[]){
 /*...................................................................*/
 
 /*...*/
-  mui  = media( c, b);
-  sigi = desv( c, b);
+  mui  = media( b, c);
+  sigi = std( b, c);
 /*...................................................................*/
 
 /*...*/
