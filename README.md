@@ -19,4 +19,5 @@ Já o desvio padrão é dado por:
 * Fortran
 * Julia
 * C
+* Python+C 
 
