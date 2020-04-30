@@ -139,12 +139,10 @@ def get_b_c(mu,sig,tol=1.e-11,maxIt=10000, alf=0.5, ver=True):
         F[1] = sig**2 + mu**2
         F[2] = 0.0
 
-    def matvec(A,x):
+    def matvec(A,x, y):
         '''
         operacao matriz vetor
         '''
-        y = np.zeros(3,dtype=np.float64)
-
         y[0] = A[0]*x[0]
         y[1] = A[1]*x[1]
         y[2] = A[2]*x[2] + A[3]*x[1] 
@@ -154,6 +152,7 @@ def get_b_c(mu,sig,tol=1.e-11,maxIt=10000, alf=0.5, ver=True):
 # ...
     A = np.zeros(4,dtype=np.float64)
     x = np.zeros(3,dtype=np.float64)
+    y = np.zeros(3,dtype=np.float64)
     F = np.zeros(3,dtype=np.float64)
 
 # ... chute inicial
@@ -161,14 +160,16 @@ def get_b_c(mu,sig,tol=1.e-11,maxIt=10000, alf=0.5, ver=True):
     x[1] = sig/mu # y
     x[2] = 2.e0*x[1] # x
 
-    VetorF(F,sig,mu)
+    VetorF(F,sig,mu)   
 
-
+# ... 
+    one_alf = 1.e0 - alf
+    
 # ... loop
     for i in range(1,maxIt+1):
         MatrizA(A,x)        
 # ... residuo
-        R = F - matvec(A,x)
+        R = F - matvec( A, x, y)
 # ... ||R||    
         Res = np.linalg.norm(R)
         if  Res < tol:       
@@ -178,7 +179,7 @@ def get_b_c(mu,sig,tol=1.e-11,maxIt=10000, alf=0.5, ver=True):
 # ... x = (A^-1)*F
         solv(A,x,F)
 # ... update x
-        x = alf*x + (1.e0 - alf)*x0 
+        x = alf*x + one_alf*x0 
 
     if ver:
         print('\n***************************************')
