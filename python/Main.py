@@ -11,7 +11,7 @@ def main():
     sig =1.0
 
     time  = tm.time()
-    b, c = wb.get_b_c(mu,sig,tol=1e-11,maxIt=1500000)
+    b, c, _ = wb.get_b_c(mu,sig,tol=1e-11,maxIt=1500000)
     time = tm.time() - time
 
     print('\n***************************************')
