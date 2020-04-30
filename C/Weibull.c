@@ -93,7 +93,7 @@ static double modRes( double *f, double *a, double *x)
 
 /********************************************************************** 
  * Data de criacao    : 21/03/2020                                    *
- * Data de modificaco : 23/04/2020                                    * 
+ * Data de modificaco : 25/04/2020                                    * 
  * ------------------------------------------------------------------ *   
  * weibull : calculo de b e c apartir de mu e sig                     *    
  * ------------------------------------------------------------------ * 
@@ -124,7 +124,7 @@ static double modRes( double *f, double *a, double *x)
  *                                                                    *
  * ------------------------------------------------------------------ * 
  **********************************************************************/
-void weibull(double const mu , double const sig
+int weibull(double const mu , double const sig
             ,double *b       , double *c
             ,double const tol, int const maxIt
             ,double const alf)
@@ -197,6 +197,7 @@ void weibull(double const mu , double const sig
   *b = 2.e0/x[1];
 /*...................................................................*/
 
+  return i;
 }
 /*********************************************************************/
 

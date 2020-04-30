@@ -23,7 +23,7 @@ class Weibull_C():
                                         ct.c_double,
                                         ct.c_int,
                                         ct.c_double]
-        self.__lib.weibull.restype = None
+        self.__lib.weibull.restype = ct.c_int
 
     def media(self, b, c):
         '''
@@ -122,7 +122,7 @@ class Weibull_C():
         max_iter -> numero maximo de iteracoes no algoritimo nao linear
         alf      -> paramentro de relaxamento
         ----------------------------------------------------------------
-        retorno: (b, c)
+        retorno: (b, c, iter)
         ----------------------------------------------------------------
         OBS:
         ****************************************************************
@@ -137,11 +137,11 @@ class Weibull_C():
         b_c       = ct.c_double()
         c_c       = ct.c_double()
         # ... chamando a funcao
-        self.__lib.weibull(mu_c , sig_c,
+        it_c = self.__lib.weibull(mu_c , sig_c,
                        ct.byref(b_c), ct.byref(c_c),
                        tol_c, max_iter_c,
                        alf_c)
 
-        return (b_c.value, c_c.value)
+        return (b_c.value, c_c.value, it_c)
 
 

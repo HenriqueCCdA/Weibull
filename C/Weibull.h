@@ -4,7 +4,7 @@
   #include<math.h>
   #include<stdio.h>
 
-  void weibull(double const mu , double const sig
+  int weibull(double const mu , double const sig
               ,double *b       , double *c
               ,double const tol, int const maxIt
               ,double const alf);
