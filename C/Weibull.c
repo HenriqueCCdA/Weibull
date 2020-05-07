@@ -130,9 +130,9 @@ int weibull(double const mu , double const sig
             ,double const alf)
 {
   short fFag;
-  int i, j;
+  int i, j, k;
   double one, x[3], x0[3], a[4], f[2], res;
-
+  char line[] = {"*********************************************************"};
 /*...*/
   fFag = 1;
 /*...................................................................*/
@@ -151,6 +151,7 @@ int weibull(double const mu , double const sig
 /*...................................................................*/
 
 /*...*/
+  k = 1;
   for(i = 0; i < maxIt; i++)  {
 /*...*/
     for(j = 0; j < 3; j++)
@@ -159,6 +160,14 @@ int weibull(double const mu , double const sig
   
 /*... atualizando a matriz a*/
     updateA(a, x);
+/*...................................................................*/
+
+/*...*/
+    if(k == 1000){
+      printf("\rit %d of %d",i+1, maxIt);
+      k=0;
+    }
+    k++;
 /*...................................................................*/
 
 /*...*/
@@ -183,10 +192,11 @@ int weibull(double const mu , double const sig
 
 /*...*/
   if(fFag) 
-    printf("!!!Warning!!!\n");
+    printf("\n\n!!!Warning!!!\n");
 /*...................................................................*/
 
 /*...*/
+  printf("\n");
   printf("*********************************************************\n");
   printf("Res final %e para it %d\n", res, i);
   printf("*********************************************************\n");
